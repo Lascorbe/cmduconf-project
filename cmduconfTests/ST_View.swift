@@ -22,6 +22,27 @@ class ST_View: QuickSpec {
     let delegate = ViewController()
     
     override func spec() {
-        
+        describe("A View") {
+            context("on a 4' screen") {
+                let view = View(delegate: self.delegate)
+                constrain(view) { view in
+                    view.width == 320
+                    view.height == 568
+                }
+                it("has a valid snapshot") {
+                    expect(view).to(self.validateSnapshot())
+                }
+            }
+            context("on a 5.5' screen") {
+                let view = View(delegate: self.delegate)
+                constrain(view) { view in
+                    view.width == 414
+                    view.height == 736
+                }
+                it("has a valid snapshot") {
+                    expect(view).to(self.validateSnapshot())
+                }
+            }
+        }
     }
 }
